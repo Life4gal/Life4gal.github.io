@@ -30,6 +30,11 @@
 
   
   <link rel="stylesheet" type="text/css" href="/./main.0cf68a.css">
+  <!-- 旋转头像效果-->
+  
+	<link rel="stylesheet" type="text/css" href="./avatar-totate.css">
+  
+  <!-- 添加完成 -->
   <style type="text/css">
   
     #container.show {
@@ -45,9 +50,9 @@
 <body>
   <div id="container" q-class="show:isCtnShow">
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
-    <div class="left-col" q-class="show:isShow">
+    <div class="left-col" q-class="show:isShow" style="background: url('https://f.ffsup.com/ffsup/images/2019/10/22/19f1aef7ff358759d.png') no-repeat center bottom;background-size: cover;" >
       
-<div class="overlay" style="background: #4d4d4d"></div>
+<div class="overlay" style="background: url('https://f0.mc.0sm.com/ffsup/images/2019/11/14/73174862_p025a30134d8d59db0.png') no-repeat center bottom;background-size: cover;"></div>
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
@@ -64,6 +69,10 @@
 			<ul>
 			
 				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/categories">文章分类</a></li>
+	        
+				<li><a href="/archives">归档</a></li>
 	        
 			</ul>
 		</nav>
@@ -117,6 +126,10 @@
 			
 				
 			
+				
+			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -130,10 +143,14 @@
 			</nav>
 
 			<nav class="header-menu js-header-menu">
-				<ul style="width: 50%">
+				<ul style="width: 70%">
 				
 				
-					<li style="width: 100%"><a href="/">主页</a></li>
+					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
+		        
+					<li style="width: 33.333333333333336%"><a href="/categories">文章分类</a></li>
+		        
+					<li style="width: 33.333333333333336%"><a href="/archives">归档</a></li>
 		        
 				</ul>
 			</nav>
@@ -163,6 +180,28 @@
         <a href="/2020/04/16/hello-world/" class="archive-article-date">
   	<time datetime="2020-04-17T02:40:32.766Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-17</time>
 </a>
+        
+        
+        
+        <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">810字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">3分</span>
+      </span>
+    </span>
+</div>
+
         
       </header>
     
@@ -232,6 +271,14 @@
 	</div>
 
       
+	<!-- 开始添加阅读量-->
+	
+	<span id="busuanzi_container_page_pv">
+	|  阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span>
+	
+	<!-- 添加完成 -->
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -264,11 +311,11 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/04/18/%E5%87%BD%E6%95%B0%E6%A8%A1%E6%9D%BF/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/04/19/%E7%B1%BB%E6%A8%A1%E6%9D%BF/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          函数模板
+          类模板
         
       </div>
     </a>
@@ -319,6 +366,44 @@
   
 
 
+
+  <section id="comments" class="comments">
+    <style>
+      .comments{margin:30px;padding:10px;background:#fff}
+      @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:#fff}}
+    </style>
+    <div id="vcomment" class="comment"></div>
+<script src="//cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min.js"></script>
+<script src='//cdn.jsdelivr.net/npm/valine/dist/Valine.min.js'></script>
+<script>
+   var notify = 'false' == true ? true : false;
+   var verify = 'false' == true ? true : false;
+   new Valine({
+            av: AV,
+            el: '#vcomment',
+            notify: notify,
+            verify: verify,
+            app_id: "KBynBA6rRCuYE7cELfEpvA4i-gzGzoHsz",
+            app_key: "5QL9o0PXSgmcpT9tsvynhu5J",
+            placeholder: "吐槽一下～",
+            avatar: "mm",
+            avatar_cdn: "",
+            pageSize: 10
+    });
+    if(window.location.hash){
+        var checkExist = setInterval(function() {
+           if ($(window.location.hash).length) {
+              $('html, body').animate({scrollTop: $(window.location.hash).offset().top-90}, 1000);
+              clearInterval(checkExist);
+           }
+        }, 100);
+    }
+</script>
+
+  </section>
+
+
           </div>
         </div>
       </div>
@@ -329,11 +414,23 @@
     		&copy; 2020 Life4Gal
     	</div>
       	<div class="footer-right">
-      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      		框架基于<a href="http://hexo.io/" target="_blank">Hexo</a>
+      		主题基于<a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a>
       	</div>
     </div>
   </div>
+<!-- 引入不蒜子-->
+		<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- 开始添加本站访客数-->
+		<span id="busuanzi_container_site_pv">
+		    本站总访问量: <span id="busuanzi_value_site_pv"></span>
+		</span>
+		<span id="busuanzi_container_site_uv">
+		    本站总访客: <span id="busuanzi_value_site_uv"></span>
+		</span>
+<!-- 添加完成 -->
 </footer>
+
     </div>
     <script>
 	var yiliaConfig = {
@@ -413,11 +510,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CPP-函数模板</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">CPP-非类型模板参数</a>
+                <a href="javascript:void(0)" class="js-tag color2">CPP-模板</a>
               </li>
             
             <div class="clearfix"></div>
@@ -555,4 +648,5 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
 </div>
   </div>
 </body>
+<script type="text/javascript" src="/js/click-heart.js"></script>
 </html>
