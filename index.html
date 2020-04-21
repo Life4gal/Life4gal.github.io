@@ -164,6 +164,163 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/20/hello-world/">Hello World</a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/20/hello-world/" class="archive-article-date">
+  	<time datetime="2020-04-21T03:51:39.076Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-21</time>
+</a>
+        
+        
+        
+        <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">810字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">3分</span>
+      </span>
+    </span>
+</div>
+
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>事实证明，WordPress一点也不香(其实是我自己太菜了)，而且也没有多余的时间管理，一直想找一个轻量一些的博客框架安安心心的写点文章，直到我遇见了<a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>。</p>
+<p>网上用Hexo架设博客的教程遍地都是，这里只是记录一下自己搭建的过程。</p>
+<h2 id="开始吧"><a href="#开始吧" class="headerlink" title="开始吧"></a>开始吧</h2><h3 id="我的系统"><a href="#我的系统" class="headerlink" title="我的系统"></a>我的系统</h3><p><strong>虚拟机: Ubuntu 19.10</strong><br><strong>虚拟化: VMWare</strong></p>
+<h3 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h3><h4 id="安装git"><a href="#安装git" class="headerlink" title="安装git"></a>安装git</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install git-core</span><br></pre></td></tr></table></figure>
+
+<h4 id="安装node-js"><a href="#安装node-js" class="headerlink" title="安装node.js"></a>安装node.js</h4><p>我是在<a href="https://github.com/nodesource/distributions" target="_blank" rel="noopener">nodesource</a>安装的，可以根据自己情况选择安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ curl -sL https://deb.nodesource.com/setup_13.x | sudo -E bash -</span><br><span class="line">$ sudo apt-get install -y nodejs</span><br></pre></td></tr></table></figure>
+
+<h4 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h4><p>最好的教程就在<a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a><br>我是使用以下命令安装的</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo npm install -g hexo-cli</span><br><span class="line">$ sudo npm install hexo-server --save</span><br></pre></td></tr></table></figure>
+<p>使用sudo是因为我这里有权限问题</p>
+<h4 id="创建博客"><a href="#创建博客" class="headerlink" title="创建博客"></a>创建博客</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init blog	<span class="comment"># 博客的文件名为blog</span></span><br><span class="line">$ <span class="built_in">cd</span> blog</span><br><span class="line">$ npm install		<span class="comment">#进行安装</span></span><br><span class="line">$ hexo server		<span class="comment">#启动</span></span><br></pre></td></tr></table></figure>
+<p>浏览器访问 <a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a> 就可以看到你的成果了</p>
+<h4 id="配置主题"><a href="#配置主题" class="headerlink" title="配置主题"></a>配置主题</h4><p>这里的配置我是参考<a href="https://segmentfault.com/a/1190000005624504" target="_blank" rel="noopener">jsyzchen</a>的文章<br><del>原创不原创我不知道，我先看到他的那他就是原创</del>🤔🤔🤔</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> blog</span><br><span class="line">$ git <span class="built_in">clone</span> https://github.com/litten/hexo-theme-yilia.git themes/yilia	<span class="comment">#下载主题</span></span><br><span class="line">$ <span class="built_in">cd</span> themes/yilia</span><br><span class="line">$ git pull	<span class="comment">#之后更新用</span></span><br></pre></td></tr></table></figure>
+
+<p>添加<a href="https://github.com/overtrue/share.js" target="_blank" rel="noopener">Share.js</a><br><del>我基本都不用</del></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vim syilia/_config.yml	<span class="comment">#我用的是Ubuntu所以直接用文本编辑器改的</span></span><br></pre></td></tr></table></figure>
+<p>立里面都是中文,根据需求自己改</p>
+<p>找到 share_jia: false 这一行,在下面加入<br>share_addthis: false<br>share_social: true</p>
+<p>编辑yilia/layout/_partial/head.ejs文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vim syilia/layout/_partial/head.ejs	<span class="comment">#我用的是Ubuntu所以直接用文本编辑器改的</span></span><br></pre></td></tr></table></figure>
+<p>加入代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;% if (theme.share_social)&#123; %&gt;</span><br><span class="line">&lt;%- css(&#39;https:&#x2F;&#x2F;cdnjs.cloudflare.com&#x2F;ajax&#x2F;libs&#x2F;social-share.js&#x2F;1.0.13&#x2F;css&#x2F;share.min&#39;) %&gt;</span><br><span class="line">&lt;% &#125; %&gt;</span><br></pre></td></tr></table></figure>
+<p><del>加在那里?那不是一堆差不多格式的代码么</del></p>
+<p>进入yilia/layout/_partial/post目录，添加share_social.ejs文件,代码如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;div style&#x3D;&quot;padding:0 40px 10px;&quot;&gt;</span><br><span class="line">	&lt;!-- social-share Button BEGIN --&gt;</span><br><span class="line">	&lt;div class&#x3D;&quot;social-share&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">	&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdnjs.cloudflare.com&#x2F;ajax&#x2F;libs&#x2F;social-share.js&#x2F;1.0.15&#x2F;js&#x2F;social-share.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;!-- social-share Button END --&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+
+<p>编辑yilia/layout/_partial/article.ejs文件，找到theme.share_jia的位置，把加载social-share的代码放在与他们同级的位置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;% if (!index &amp;&amp; theme.share_social)&#123; %&gt;</span><br><span class="line">&lt;%- partial(&#39;post&#x2F;share_social&#39;) %&gt;</span><br><span class="line">&lt;% &#125; %&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h4><p><del>这里假定你有一个Github账号</del><br>先生成一个 <code>SSH key</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C <span class="string">"Github的注册邮箱地址"</span></span><br></pre></td></tr></table></figure>
+<p>一路回车不用管<br>默认生成位置是 /home/你的用户名/.ssh/ 没看到记的打开显示隐藏文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vim /home/你的用户名/.ssh/id_rsa.pub	<span class="comment">#我用的是Ubuntu所以直接用文本编辑器改的</span></span><br></pre></td></tr></table></figure>
+<p><strong>全部复制下来</strong></p>
+<p>访问 <strong>GitHub – Settings – SSH and GPG keys – New SSH key</strong><br><code>Title</code>想写什么写什么 <code>Key</code>把刚才复制的内容复制进去</p>
+<p>修改博客文件blog根目录的<code>_config.yml</code></p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">	<span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">	<span class="attr">repo:</span> <span class="string">git@github.com:username/username.github.io.git</span></span><br><span class="line">	<span class="attr">branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
+
+<p>部署到GitHub上</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean</span><br><span class="line">$ hexo g</span><br><span class="line">$ hexo d</span><br></pre></td></tr></table></figure>
+
+<p>访问 <a href="https://username.github.io/" target="_blank" rel="noopener">https://username.github.io/</a> 查看你的成果</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">hello-world</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<!-- 开始添加阅读量-->
+	
+	<!-- 添加完成 -->
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/博客记录//" class="article-tag-list-link color5">博客记录</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/20/hello-world/">展开全文 >></a>
+        </p>
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
     <article id="post-类模板" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -629,163 +786,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/04/19/%E9%9D%9E%E7%B1%BB%E5%9E%8B%E6%A8%A1%E6%9D%BF%E5%8F%82%E6%95%B0/">展开全文 >></a>
-        </p>
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/16/hello-world/">Hello World</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/16/hello-world/" class="archive-article-date">
-  	<time datetime="2020-04-17T02:40:32.766Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-17</time>
-</a>
-        
-        
-        
-        <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">810字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">3分</span>
-      </span>
-    </span>
-</div>
-
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>事实证明，WordPress一点也不香(其实是我自己太菜了)，而且也没有多余的时间管理，一直想找一个轻量一些的博客框架安安心心的写点文章，直到我遇见了<a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>。</p>
-<p>网上用Hexo架设博客的教程遍地都是，这里只是记录一下自己搭建的过程。</p>
-<h2 id="开始吧"><a href="#开始吧" class="headerlink" title="开始吧"></a>开始吧</h2><h3 id="我的系统"><a href="#我的系统" class="headerlink" title="我的系统"></a>我的系统</h3><p><strong>虚拟机: Ubuntu 19.10</strong><br><strong>虚拟化: VMWare</strong></p>
-<h3 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h3><h4 id="安装git"><a href="#安装git" class="headerlink" title="安装git"></a>安装git</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install git-core</span><br></pre></td></tr></table></figure>
-
-<h4 id="安装node-js"><a href="#安装node-js" class="headerlink" title="安装node.js"></a>安装node.js</h4><p>我是在<a href="https://github.com/nodesource/distributions" target="_blank" rel="noopener">nodesource</a>安装的，可以根据自己情况选择安装</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ curl -sL https://deb.nodesource.com/setup_13.x | sudo -E bash -</span><br><span class="line">$ sudo apt-get install -y nodejs</span><br></pre></td></tr></table></figure>
-
-<h4 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h4><p>最好的教程就在<a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a><br>我是使用以下命令安装的</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo npm install -g hexo-cli</span><br><span class="line">$ sudo npm install hexo-server --save</span><br></pre></td></tr></table></figure>
-<p>使用sudo是因为我这里有权限问题</p>
-<h4 id="创建博客"><a href="#创建博客" class="headerlink" title="创建博客"></a>创建博客</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init blog	<span class="comment"># 博客的文件名为blog</span></span><br><span class="line">$ <span class="built_in">cd</span> blog</span><br><span class="line">$ npm install		<span class="comment">#进行安装</span></span><br><span class="line">$ hexo server		<span class="comment">#启动</span></span><br></pre></td></tr></table></figure>
-<p>浏览器访问 <a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a> 就可以看到你的成果了</p>
-<h4 id="配置主题"><a href="#配置主题" class="headerlink" title="配置主题"></a>配置主题</h4><p>这里的配置我是参考<a href="https://segmentfault.com/a/1190000005624504" target="_blank" rel="noopener">jsyzchen</a>的文章<br><del>原创不原创我不知道，我先看到他的那他就是原创</del>🤔🤔🤔</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> blog</span><br><span class="line">$ git <span class="built_in">clone</span> https://github.com/litten/hexo-theme-yilia.git themes/yilia	<span class="comment">#下载主题</span></span><br><span class="line">$ <span class="built_in">cd</span> themes/yilia</span><br><span class="line">$ git pull	<span class="comment">#之后更新用</span></span><br></pre></td></tr></table></figure>
-
-<p>添加<a href="https://github.com/overtrue/share.js" target="_blank" rel="noopener">Share.js</a><br><del>我基本都不用</del></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vim syilia/_config.yml	<span class="comment">#我用的是Ubuntu所以直接用文本编辑器改的</span></span><br></pre></td></tr></table></figure>
-<p>立里面都是中文,根据需求自己改</p>
-<p>找到 share_jia: false 这一行,在下面加入<br>share_addthis: false<br>share_social: true</p>
-<p>编辑yilia/layout/_partial/head.ejs文件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vim syilia/layout/_partial/head.ejs	<span class="comment">#我用的是Ubuntu所以直接用文本编辑器改的</span></span><br></pre></td></tr></table></figure>
-<p>加入代码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;% if (theme.share_social)&#123; %&gt;</span><br><span class="line">&lt;%- css(&#39;https:&#x2F;&#x2F;cdnjs.cloudflare.com&#x2F;ajax&#x2F;libs&#x2F;social-share.js&#x2F;1.0.13&#x2F;css&#x2F;share.min&#39;) %&gt;</span><br><span class="line">&lt;% &#125; %&gt;</span><br></pre></td></tr></table></figure>
-<p><del>加在那里?那不是一堆差不多格式的代码么</del></p>
-<p>进入yilia/layout/_partial/post目录，添加share_social.ejs文件,代码如下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;div style&#x3D;&quot;padding:0 40px 10px;&quot;&gt;</span><br><span class="line">	&lt;!-- social-share Button BEGIN --&gt;</span><br><span class="line">	&lt;div class&#x3D;&quot;social-share&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">	&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdnjs.cloudflare.com&#x2F;ajax&#x2F;libs&#x2F;social-share.js&#x2F;1.0.15&#x2F;js&#x2F;social-share.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;!-- social-share Button END --&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
-
-<p>编辑yilia/layout/_partial/article.ejs文件，找到theme.share_jia的位置，把加载social-share的代码放在与他们同级的位置</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;% if (!index &amp;&amp; theme.share_social)&#123; %&gt;</span><br><span class="line">&lt;%- partial(&#39;post&#x2F;share_social&#39;) %&gt;</span><br><span class="line">&lt;% &#125; %&gt;</span><br></pre></td></tr></table></figure>
-
-<h4 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h4><p><del>这里假定你有一个Github账号</del><br>先生成一个 <code>SSH key</code></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C <span class="string">"Github的注册邮箱地址"</span></span><br></pre></td></tr></table></figure>
-<p>一路回车不用管<br>默认生成位置是 /home/你的用户名/.ssh/ 没看到记的打开显示隐藏文件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vim /home/你的用户名/.ssh/id_rsa.pub	<span class="comment">#我用的是Ubuntu所以直接用文本编辑器改的</span></span><br></pre></td></tr></table></figure>
-<p><strong>全部复制下来</strong></p>
-<p>访问 <strong>GitHub – Settings – SSH and GPG keys – New SSH key</strong><br><code>Title</code>想写什么写什么 <code>Key</code>把刚才复制的内容复制进去</p>
-<p>修改博客文件blog根目录的<code>_config.yml</code></p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">	<span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">	<span class="attr">repo:</span> <span class="string">git@github.com:username/username.github.io.git</span></span><br><span class="line">	<span class="attr">branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
-
-<p>部署到GitHub上</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean</span><br><span class="line">$ hexo g</span><br><span class="line">$ hexo d</span><br></pre></td></tr></table></figure>
-
-<p>访问 <a href="https://username.github.io/" target="_blank" rel="noopener">https://username.github.io/</a> 查看你的成果</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">hello-world</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<!-- 开始添加阅读量-->
-	
-	<!-- 添加完成 -->
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/博客记录//" class="article-tag-list-link color5">博客记录</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/16/hello-world/">展开全文 >></a>
         </p>
       
 
