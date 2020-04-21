@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="https://baka99.com">
   <title>函数模板 | Abase-Yourself</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="C++有关函数模板的一些笔记模板实参推断模板参数不允许隐式转换，这表示你必须保证你传入模板函数的参数必须匹配1234567891011121314151617int max(int a, int b)&amp;#123;    return a &gt; b ? a : b;&amp;#125;template&lt;typename T&gt;T max(T a, T b)&amp;#123;    return a">
+  <meta name="description" content="C++有关函数模板的一些笔记模板实参推断">
 <meta property="og:type" content="article">
 <meta property="og:title" content="函数模板">
-<meta property="og:url" content="https://baka99.com/2020/04/19/%E5%87%BD%E6%95%B0%E6%A8%A1%E6%9D%BF/index.html">
+<meta property="og:url" content="https://baka99.com/2020/04/20/%E5%87%BD%E6%95%B0%E6%A8%A1%E6%9D%BF/index.html">
 <meta property="og:site_name" content="Abase-Yourself">
-<meta property="og:description" content="C++有关函数模板的一些笔记模板实参推断模板参数不允许隐式转换，这表示你必须保证你传入模板函数的参数必须匹配1234567891011121314151617int max(int a, int b)&amp;#123;    return a &gt; b ? a : b;&amp;#125;template&lt;typename T&gt;T max(T a, T b)&amp;#123;    return a">
+<meta property="og:description" content="C++有关函数模板的一些笔记模板实参推断">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-04-20T04:19:09.432Z">
-<meta property="article:modified_time" content="2020-04-20T04:19:09.440Z">
+<meta property="article:published_time" content="2020-04-21T04:18:03.529Z">
+<meta property="article:modified_time" content="2020-04-21T04:18:03.533Z">
 <meta property="article:author" content="Life4Gal">
 <meta property="article:tag" content="CPP-函数模板">
 <meta name="twitter:card" content="summary">
@@ -177,8 +177,8 @@
   
 
         
-        <a href="/2020/04/19/%E5%87%BD%E6%95%B0%E6%A8%A1%E6%9D%BF/" class="archive-article-date">
-  	<time datetime="2020-04-20T04:19:09.432Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-20</time>
+        <a href="/2020/04/20/%E5%87%BD%E6%95%B0%E6%A8%A1%E6%9D%BF/" class="archive-article-date">
+  	<time datetime="2020-04-21T04:18:03.529Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-21</time>
 </a>
         
         
@@ -207,7 +207,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="C-有关函数模板的一些笔记"><a href="#C-有关函数模板的一些笔记" class="headerlink" title="C++有关函数模板的一些笔记"></a>C++有关函数模板的一些笔记</h1><h2 id="模板实参推断"><a href="#模板实参推断" class="headerlink" title="模板实参推断"></a>模板实参推断</h2><h3 id="模板参数不允许隐式转换，这表示你必须保证你传入模板函数的参数必须匹配"><a href="#模板参数不允许隐式转换，这表示你必须保证你传入模板函数的参数必须匹配" class="headerlink" title="模板参数不允许隐式转换，这表示你必须保证你传入模板函数的参数必须匹配"></a><strong>模板参数不允许隐式转换</strong>，这表示你必须保证你传入模板函数的参数<strong>必须</strong>匹配</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">max</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a &gt; b ? a : b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function">T <span class="title">max</span><span class="params">(T a, T b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a &gt; b ? a : b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">max</span>(<span class="string">"hello"</span>, s);			<span class="comment">// 严重错误，不允许将const char[6]转换为std::string或是将std::string转换为const char[6]</span></span><br><span class="line"><span class="built_in">max</span>(<span class="number">1</span>, <span class="number">42</span>);					<span class="comment">//调用int max(int, int)</span></span><br><span class="line"><span class="built_in">max</span>(<span class="string">'1'</span>, <span class="number">42</span>);				<span class="comment">//依旧调用int max(int, int)，因为模板函数不允许隐式转换</span></span><br><span class="line"><span class="built_in">max</span>(<span class="number">1.0</span>, <span class="number">42.0</span>);				<span class="comment">//调用模板，推断为double max(double, double)</span></span><br><span class="line"><span class="built_in">max</span>(<span class="string">'1'</span>, <span class="string">'2'</span>);				<span class="comment">//调用模板，推断为char max(char, char)</span></span><br><span class="line"><span class="built_in">max</span>&lt;&gt;(<span class="number">1</span>, <span class="number">42</span>);				<span class="comment">//显式指定调用模板函数特例int max(int, int)</span></span><br></pre></td></tr></table></figure>
+        <h1 id="C-有关函数模板的一些笔记"><a href="#C-有关函数模板的一些笔记" class="headerlink" title="C++有关函数模板的一些笔记"></a>C++有关函数模板的一些笔记</h1><h2 id="模板实参推断"><a href="#模板实参推断" class="headerlink" title="模板实参推断"></a>模板实参推断</h2><a id="more"></a>
+<h3 id="模板参数不允许隐式转换，这表示你必须保证你传入模板函数的参数必须匹配"><a href="#模板参数不允许隐式转换，这表示你必须保证你传入模板函数的参数必须匹配" class="headerlink" title="模板参数不允许隐式转换，这表示你必须保证你传入模板函数的参数必须匹配"></a><strong>模板参数不允许隐式转换</strong>，这表示你必须保证你传入模板函数的参数<strong>必须</strong>匹配</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">max</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a &gt; b ? a : b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function">T <span class="title">max</span><span class="params">(T a, T b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a &gt; b ? a : b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">max</span>(<span class="string">"hello"</span>, s);			<span class="comment">// 严重错误，不允许将const char[6]转换为std::string或是将std::string转换为const char[6]</span></span><br><span class="line"><span class="built_in">max</span>(<span class="number">1</span>, <span class="number">42</span>);					<span class="comment">//调用int max(int, int)</span></span><br><span class="line"><span class="built_in">max</span>(<span class="string">'1'</span>, <span class="number">42</span>);				<span class="comment">//依旧调用int max(int, int)，因为模板函数不允许隐式转换</span></span><br><span class="line"><span class="built_in">max</span>(<span class="number">1.0</span>, <span class="number">42.0</span>);				<span class="comment">//调用模板，推断为double max(double, double)</span></span><br><span class="line"><span class="built_in">max</span>(<span class="string">'1'</span>, <span class="string">'2'</span>);				<span class="comment">//调用模板，推断为char max(char, char)</span></span><br><span class="line"><span class="built_in">max</span>&lt;&gt;(<span class="number">1</span>, <span class="number">42</span>);				<span class="comment">//显式指定调用模板函数特例int max(int, int)</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="const-amp-volatile-限定符将被忽略，数组或者函数将转换为指针"><a href="#const-amp-volatile-限定符将被忽略，数组或者函数将转换为指针" class="headerlink" title="const &amp; volatile 限定符将被忽略，数组或者函数将转换为指针"></a>const &amp; volatile 限定符将被忽略，数组或者函数将转换为指针</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function">T <span class="title">max</span><span class="params">(T a, T b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a &gt; b ? a : b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> b = <span class="number">42</span>;</span><br><span class="line"><span class="keyword">int</span>&amp; c = b;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> arr[<span class="number">10</span>];</span><br><span class="line"></span><br><span class="line"><span class="built_in">max</span>(a, b);				<span class="comment">// T推断为int</span></span><br><span class="line"><span class="built_in">max</span>(b, b);				<span class="comment">// T推断为int</span></span><br><span class="line"><span class="built_in">max</span>(a, c);				<span class="comment">// T推断为int(c的const限定符被忽略)</span></span><br><span class="line"><span class="built_in">max</span>(&amp;a, arr);			<span class="comment">// T被推断为int*</span></span><br></pre></td></tr></table></figure>
 
@@ -309,7 +310,7 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/04/19/%E7%B1%BB%E6%A8%A1%E6%9D%BF/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/04/20/%E7%B1%BB%E6%A8%A1%E6%9D%BF/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
@@ -319,7 +320,7 @@
     </a>
   
   
-    <a href="/2020/04/19/%E9%9D%9E%E7%B1%BB%E5%9E%8B%E6%A8%A1%E6%9D%BF%E5%8F%82%E6%95%B0/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2020/04/20/%E9%9D%9E%E7%B1%BB%E5%9E%8B%E6%A8%A1%E6%9D%BF%E5%8F%82%E6%95%B0/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">非类型模板参数</div>
       <i class="icon-circle-right"></i>
     </a>
@@ -443,7 +444,7 @@
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
-		open_in_new: false,
+		open_in_new: [object Object],
 		toc_hide_index: true,
 		root: "/",
 		innerArchive: true,
