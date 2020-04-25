@@ -1,7 +1,7 @@
 "use strict";
 
-const CLIENT_WIDTH = 350;
-const CLIENT_HEIGHT = 350;
+const CLIENT_WIDTH = 400;
+const CLIENT_HEIGHT = 400;
 
 //
 // 鼠标事件相关

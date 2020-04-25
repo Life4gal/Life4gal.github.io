@@ -14,12 +14,13 @@
 
         canvas {
             display: block;
+            margin:0 auto;
         }
 		
 		</style>
 	</head>
 	<body class="vsc-initialized">
-		<canvas id="rubik" width="350" height="350"></canvas>
+		<canvas id="rubik" width="400" height="400"></canvas>
 
 		<script id="vertex-shader" type="x-shader/x-vertex">
 			// 顶点着色器
@@ -52,13 +53,13 @@
 			gl_FragColor = texture2D(u_image, v_tex);
 		}
     </script>
-		<div id="gametime"></div>
-		<div id="xycoordinates"></div>
-		<div id="picking"></div>
-		<div id="helper"></div>
-		<div id="helper2"></div>
-		<button id="finish">一键还原</button>
-		<button id="reset">重新开始</button>
+		<div id="gametime" align="center"></div>
+		<div id="xycoordinates" align="center"></div>
+		<div id="picking" align="center"></div>
+		<div id="helper" align="center"></div>
+		<div id="helper2" align="center"></div>
+		<button id="finish" style="display:block;margin:0 auto">一键还原</button>
+		<button id="reset" style="display:block;margin:0 auto">重新开始</button>
 		<script type="text/javascript" src="./webgl-utils.js"></script>
 		<script type="text/javascript" src="./shader.js"></script>
 		<script type="text/javascript" src="./gl-matrix-min.js"></script>
