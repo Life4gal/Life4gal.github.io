@@ -6,27 +6,28 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://baka99.com">
-  <title>Tag: CPP-函数模板 | Abase-Yourself</title>
+  <title>MSVC&amp;MinGW有关虚表实现差异 | Abase-Yourself</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="站长很懒，没有添加描述...">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Abase-Yourself">
-<meta property="og:url" content="https://baka99.com/tags/CPP-%E5%87%BD%E6%95%B0%E6%A8%A1%E6%9D%BF/index.html">
+  <meta name="description" content="Inside The C++ Object Model今天看深度探索C++对象模型(Inside The C++ Object Model)一书有感，有幸与朋友一起讨论一个关于成员虚函数和虚表的问题，感觉收获颇丰，故记录下来。我们讨论了两种测试，但其实这两种测试没有什么本质的区别。先上我们讨论的代码:  Foo类，它有两个私有的虚函数   12345678910111213class Foo&amp;#1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MSVC&amp;MinGW有关虚表实现差异">
+<meta property="og:url" content="https://baka99.com/2020/05/04/MSVC-MinGW%E6%9C%89%E5%85%B3%E8%99%9A%E8%A1%A8%E5%AE%9E%E7%8E%B0%E5%B7%AE%E5%BC%82/index.html">
 <meta property="og:site_name" content="Abase-Yourself">
-<meta property="og:description" content="站长很懒，没有添加描述...">
+<meta property="og:description" content="Inside The C++ Object Model今天看深度探索C++对象模型(Inside The C++ Object Model)一书有感，有幸与朋友一起讨论一个关于成员虚函数和虚表的问题，感觉收获颇丰，故记录下来。我们讨论了两种测试，但其实这两种测试没有什么本质的区别。先上我们讨论的代码:  Foo类，它有两个私有的虚函数   12345678910111213class Foo&amp;#1">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://baka99.com/.com//class_Foo.png">
+<meta property="og:image" content="https://baka99.com/.com//MinGW_func1.png">
+<meta property="og:image" content="https://baka99.com/.com//MinGW_func2.png">
+<meta property="og:image" content="https://baka99.com/.com//MSVC_func1.png">
+<meta property="og:image" content="https://baka99.com/.com//MSVC_func2.png">
+<meta property="og:image" content="https://baka99.com/.com//MinGW_addr.png">
+<meta property="og:image" content="https://baka99.com/.com//MSVC_addr.png">
+<meta property="article:published_time" content="2020-05-04T20:17:48.000Z">
+<meta property="article:modified_time" content="2020-05-05T11:21:30.076Z">
 <meta property="article:author" content="Life4Gal">
-<meta property="article:tag" content="CPP">
-<meta property="article:tag" content="C++">
-<meta property="article:tag" content="代码">
-<meta property="article:tag" content="开发">
-<meta property="article:tag" content="IT">
-<meta property="article:tag" content="开源">
-<meta property="article:tag" content="Code">
-<meta property="article:tag" content="模板">
-<meta property="article:tag" content="设计模式">
-<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="MSVC&amp;MinGW有关虚表实现差异">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://baka99.com/.com//class_Foo.png">
   
     <link rel="alternative" href="/atom.xml" title="Abase-Yourself" type="application/atom+xml">
   
@@ -180,71 +181,261 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-MSVC-MinGW有关虚表实现差异" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/19/%E5%87%BD%E6%95%B0%E6%A8%A1%E6%9D%BF/" class="archive-article-date">
-  	<time datetime="2020-04-19T14:05:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-19</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/19/%E5%87%BD%E6%95%B0%E6%A8%A1%E6%9D%BF/">函数模板</a>
+    <h1 class="article-title" itemprop="name">
+      MSVC&amp;MinGW有关虚表实现差异
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2020/05/04/MSVC-MinGW%E6%9C%89%E5%85%B3%E8%99%9A%E8%A1%A8%E5%AE%9E%E7%8E%B0%E5%B7%AE%E5%BC%82/" class="archive-article-date">
+  	<time datetime="2020-05-04T20:17:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-05</time>
+</a>
+        
+        
+        
+        <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">564字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">2分</span>
+      </span>
+    </span>
+</div>
+
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Inside-The-C-Object-Model"><a href="#Inside-The-C-Object-Model" class="headerlink" title="Inside The C++ Object Model"></a>Inside The C++ Object Model</h2><h3 id="今天看深度探索C-对象模型-Inside-The-C-Object-Model-一书有感，有幸与朋友一起讨论一个关于成员虚函数和虚表的问题，感觉收获颇丰，故记录下来。"><a href="#今天看深度探索C-对象模型-Inside-The-C-Object-Model-一书有感，有幸与朋友一起讨论一个关于成员虚函数和虚表的问题，感觉收获颇丰，故记录下来。" class="headerlink" title="今天看深度探索C++对象模型(Inside The C++ Object Model)一书有感，有幸与朋友一起讨论一个关于成员虚函数和虚表的问题，感觉收获颇丰，故记录下来。"></a>今天看<strong>深度探索C++对象模型(Inside The C++ Object Model)</strong>一书有感，有幸与朋友一起讨论一个关于<strong>成员虚函数</strong>和<strong>虚表</strong>的问题，感觉收获颇丰，故记录下来。</h3><p>我们讨论了两种测试，但其实这两种测试没有什么本质的区别。先上我们讨论的代码:</p>
+<ul>
+<li>Foo类，它有两个<strong>私有的虚函数</strong></li>
+<li><img src="/.com//class_Foo.png" alt></li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">foo1</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"using foo1()"</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">foo2</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"using foo2()"</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>测试1</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Foo foo;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">auto</span> func1 = \</span><br><span class="line">            *(<span class="keyword">static_cast</span>&lt;<span class="keyword">void</span> (Foo::* *)()&gt;(*<span class="keyword">reinterpret_cast</span>&lt;<span class="keyword">void</span>**&gt;(&amp;foo)) + <span class="number">0</span>);</span><br><span class="line">    <span class="comment">//void (Foo::* func1)() = *(static_cast&lt;void (Foo::* *)()&gt;(*reinterpret_cast&lt;void**&gt;(&amp;foo)) + 0);</span></span><br><span class="line">    <span class="keyword">auto</span> func2 = \</span><br><span class="line">            *(<span class="keyword">static_cast</span>&lt;<span class="keyword">void</span> (Foo::* *)()&gt;(*<span class="keyword">reinterpret_cast</span>&lt;<span class="keyword">void</span>**&gt;(&amp;foo)) + <span class="number">1</span>);</span><br><span class="line">    <span class="comment">//void (Foo::* func2)() = *(static_cast&lt;void (Foo::* *)()&gt;(*reinterpret_cast&lt;void**&gt;(&amp;foo)) + 1);</span></span><br><span class="line"></span><br><span class="line">    (<span class="keyword">static_cast</span>&lt;Foo*&gt;(<span class="literal">nullptr</span>)-&gt;*func1)();</span><br><span class="line">    (<span class="keyword">static_cast</span>&lt;Foo*&gt;(<span class="literal">nullptr</span>)-&gt;*func2)();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>测试2</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Foo foo;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">auto</span>* vptr = <span class="keyword">static_cast</span>&lt;<span class="keyword">void</span> (Foo::* *)()&gt;(<span class="keyword">reinterpret_cast</span>&lt;<span class="keyword">void</span>**&gt;(&amp;foo)[<span class="number">0</span>]);</span><br><span class="line">    <span class="comment">//void (Foo::* *vptr)() = static_cast&lt;void (Foo::* *)()&gt;(reinterpret_cast&lt;void**&gt;(&amp;foo)[0]);</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">auto</span> func1 = vptr[<span class="number">0</span>];</span><br><span class="line">    <span class="comment">//void (Foo::* func1)() = vptr[0];</span></span><br><span class="line">    <span class="keyword">auto</span> func2 = vptr[<span class="number">1</span>];</span><br><span class="line">    <span class="comment">//void (Foo::* func2)() = vptr[1];</span></span><br><span class="line"></span><br><span class="line">    (<span class="keyword">static_cast</span>&lt;Foo*&gt;(<span class="literal">nullptr</span>)-&gt;*func1)();</span><br><span class="line">    (<span class="keyword">static_cast</span>&lt;Foo*&gt;(<span class="literal">nullptr</span>)-&gt;*func2)();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="我们试图通过地址-偏移直接使用Foo的私有虚函数"><a href="#我们试图通过地址-偏移直接使用Foo的私有虚函数" class="headerlink" title="我们试图通过地址+偏移直接使用Foo的私有虚函数"></a>我们试图通过地址+偏移直接使用Foo的私有虚函数</h3><ul>
+<li><p>MinGW</p>
+<ul>
+<li>我们先在MinGW测试，但却遇到了一些问题。</li>
+<li>测试1，我们成功获取到了foo1()并且也正确的调用了，但是foo2()却获取失败<ul>
+<li><img src="/.com//MinGW_func1.png" alt></li>
+</ul>
+</li>
+<li>测试2，我们也成功获取到了foo1()并且也正确的调用了，但是foo2()却获取失败<ul>
+<li><img src="/.com//MinGW_func2.png" alt></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>MSVC</p>
+<ul>
+<li>MinGW测试不通，我们就切换到了MSVC进行测试</li>
+<li>测试1，成功获取到foo1()和foo2()<ul>
+<li><img src="/.com//MSVC_func1.png" alt></li>
+</ul>
+</li>
+<li>测试2，成功获取到foo1()和foo2()<ul>
+<li><img src="/.com//MSVC_func2.png" alt></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>这就很让人费解了，为什么MinGW测试不通过而MSVC测试通过了呢？只能归结于两款编译器的实现不同吧。</p>
+</li>
+<li><p>最后我们把Foo的虚函数作用域改为public并试图打印它们的地址，发现了一个更神奇的问题。</p>
+<ul>
+<li>MinGW对于两个虚函数的地址如下，居然一模一样。<ul>
+<li><img src="/.com//MinGW_addr.png" alt></li>
+</ul>
+</li>
+<li>MSVC两个虚函数地址正常。<ul>
+<li><img src="/.com//MSVC_addr.png" alt></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>想了很久都没想通为什么会有如此差距，虽有遗憾，不过收获也是颇丰。</p>
+</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+        <div class="article-pop-out tagcloud">
+          <i class="icon-tuding"></i>
+          <a class="article-tag-list-link color3">置顶</a>
+        </div>
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CPP-函数模板</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">MSVC&MinGW有关虚表实现差异</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
+	<!-- 开始添加阅读量-->
+	
+	<span id="busuanzi_container_page_pv">
+	|  阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span>
+	
+	<!-- 添加完成 -->
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/CPP-模板//" class="article-tag-list-link color2">CPP-模板</a>
+        			<a href="/categories/博客记录//" class="article-tag-list-link color5">博客记录</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+
+      
+      
+	<div style="padding:0 40px 10px;">
+    <!-- social-share Button BEGIN -->
+    <div class="social-share"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.15/js/social-share.min.js"></script>
+    <!-- social-share Button END -->
+</div>
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2020/04/24/Qt-2048/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Qt-2048</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Inside-The-C-Object-Model"><span class="toc-number">1.</span> <span class="toc-text">Inside The C++ Object Model</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#今天看深度探索C-对象模型-Inside-The-C-Object-Model-一书有感，有幸与朋友一起讨论一个关于成员虚函数和虚表的问题，感觉收获颇丰，故记录下来。"><span class="toc-number">1.1.</span> <span class="toc-text">今天看深度探索C++对象模型(Inside The C++ Object Model)一书有感，有幸与朋友一起讨论一个关于成员虚函数和虚表的问题，感觉收获颇丰，故记录下来。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#我们试图通过地址-偏移直接使用Foo的私有虚函数"><span class="toc-number">1.2.</span> <span class="toc-text">我们试图通过地址+偏移直接使用Foo的私有虚函数</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
+
+
+
+  <section id="comments" class="comments">
+    <style>
+      .comments{margin:30px;padding:10px;background:#fff}
+      @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:#fff}}
+    </style>
+    <div id="vcomment" class="comment"></div>
+<script src="//cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min.js"></script>
+<script src='//cdn.jsdelivr.net/npm/valine/dist/Valine.min.js'></script>
+<script>
+   var notify = 'false' == true ? true : false;
+   var verify = 'false' == true ? true : false;
+   new Valine({
+            av: AV,
+            el: '#vcomment',
+            notify: notify,
+            verify: verify,
+            app_id: "KBynBA6rRCuYE7cELfEpvA4i-gzGzoHsz",
+            app_key: "5QL9o0PXSgmcpT9tsvynhu5J",
+            placeholder: "吐槽一下～",
+            avatar: "mm",
+            avatar_cdn: "",
+            pageSize: 10
+    });
+    if(window.location.hash){
+        var checkExist = setInterval(function() {
+           if ($(window.location.hash).length) {
+              $('html, body').animate({scrollTop: $(window.location.hash).offset().top-90}, 1000);
+              clearInterval(checkExist);
+           }
+        }, 100);
+    }
+</script>
+
+  </section>
 
 
           </div>
@@ -279,9 +470,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
