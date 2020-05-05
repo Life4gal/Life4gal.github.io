@@ -23,7 +23,7 @@
 <meta property="og:image" content="https://baka99.com/.com//MinGW_addr.png">
 <meta property="og:image" content="https://baka99.com/.com//MSVC_addr.png">
 <meta property="article:published_time" content="2020-05-04T20:17:48.000Z">
-<meta property="article:modified_time" content="2020-05-05T11:39:01.638Z">
+<meta property="article:modified_time" content="2020-05-05T11:48:59.245Z">
 <meta property="article:author" content="Life4Gal">
 <meta property="article:tag" content="MSVC&amp;MinGW有关虚表实现差异">
 <meta name="twitter:card" content="summary">
@@ -227,7 +227,7 @@
 <p>我们讨论了两种测试，但其实这两种测试没有什么本质的区别。先上我们讨论的代码:</p>
 <ul>
 <li>Foo类，它有两个<strong>私有的虚函数</strong></li>
-<li><img src="/.com//class_Foo.png" alt></li>
+<li><img src="/.com//class_Foo.png" alt="class_Foo"></li>
 </ul>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">foo1</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"using foo1()"</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">foo2</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"using foo2()"</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
@@ -246,11 +246,11 @@
 <ul>
 <li>我们先在MinGW测试，但却遇到了一些问题。</li>
 <li>测试1，我们成功获取到了foo1()并且也正确的调用了，但是foo2()却获取失败<ul>
-<li><img src="/.com//MinGW_func1.png" alt></li>
+<li><img src="/.com//MinGW_func1.png" alt="MinGW_func1"></li>
 </ul>
 </li>
 <li>测试2，我们也成功获取到了foo1()并且也正确的调用了，但是foo2()却获取失败<ul>
-<li><img src="/.com//MinGW_func2.png" alt></li>
+<li><img src="/.com//MinGW_func2.png" alt="MinGW_func2"></li>
 </ul>
 </li>
 </ul>
@@ -259,11 +259,11 @@
 <ul>
 <li>MinGW测试不通，我们就切换到了MSVC进行测试</li>
 <li>测试1，成功获取到foo1()和foo2()<ul>
-<li><img src="/.com//MSVC_func1.png" alt></li>
+<li><img src="/.com//MSVC_func1.png" alt="MSVC_func1"></li>
 </ul>
 </li>
 <li>测试2，成功获取到foo1()和foo2()<ul>
-<li><img src="/.com//MSVC_func2.png" alt></li>
+<li><img src="/.com//MSVC_func2.png" alt="MSVC_func2"></li>
 </ul>
 </li>
 </ul>
@@ -273,11 +273,11 @@
 <li><p>最后我们把Foo的虚函数作用域改为public并试图打印它们的地址，发现了一个更神奇的问题。</p>
 <ul>
 <li>MinGW对于两个虚函数的地址如下，居然一模一样。<ul>
-<li><img src="/.com//MinGW_addr.png" alt></li>
+<li><img src="/.com//MinGW_addr.png" alt="MinGW_addr"></li>
 </ul>
 </li>
 <li>MSVC两个虚函数地址正常。<ul>
-<li><img src="/.com//MSVC_addr.png" alt></li>
+<li><img src="/.com//MSVC_addr.png" alt="MSVC_addr"></li>
 </ul>
 </li>
 </ul>
