@@ -8,12 +8,12 @@
   <link rel="dns-prefetch" href="https://baka99.com">
   <title>MSVC&amp;MinGW有关虚表实现差异 | Abase-Yourself</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Inside The C++ Object Model今天看深度探索C++对象模型(Inside The C++ Object Model)一书有感，有幸与朋友一起讨论一个关于成员虚函数和虚表的问题，感觉收获颇丰，故记录下来。我们讨论了两种测试，但其实这两种测试没有什么本质的区别。先上我们讨论的代码:  Foo类，它有两个私有的虚函数   12345678910111213class Foo&amp;#1">
+  <meta name="description" content="Inside The C++ Object Model今天看深度探索C++对象模型(Inside The C++ Object Model)一书有感，有幸与朋友一起讨论一个关于成员虚函数和虚表的问题，感觉收获颇丰，故记录下来。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MSVC&amp;MinGW有关虚表实现差异">
 <meta property="og:url" content="https://baka99.com/2020/05/04/MSVC-MinGW%E6%9C%89%E5%85%B3%E8%99%9A%E8%A1%A8%E5%AE%9E%E7%8E%B0%E5%B7%AE%E5%BC%82/index.html">
 <meta property="og:site_name" content="Abase-Yourself">
-<meta property="og:description" content="Inside The C++ Object Model今天看深度探索C++对象模型(Inside The C++ Object Model)一书有感，有幸与朋友一起讨论一个关于成员虚函数和虚表的问题，感觉收获颇丰，故记录下来。我们讨论了两种测试，但其实这两种测试没有什么本质的区别。先上我们讨论的代码:  Foo类，它有两个私有的虚函数   12345678910111213class Foo&amp;#1">
+<meta property="og:description" content="Inside The C++ Object Model今天看深度探索C++对象模型(Inside The C++ Object Model)一书有感，有幸与朋友一起讨论一个关于成员虚函数和虚表的问题，感觉收获颇丰，故记录下来。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://baka99.com/.com//class_Foo.png">
 <meta property="og:image" content="https://baka99.com/.com//MinGW_func1.png">
@@ -23,7 +23,7 @@
 <meta property="og:image" content="https://baka99.com/.com//MinGW_addr.png">
 <meta property="og:image" content="https://baka99.com/.com//MSVC_addr.png">
 <meta property="article:published_time" content="2020-05-04T20:17:48.000Z">
-<meta property="article:modified_time" content="2020-05-05T11:21:30.076Z">
+<meta property="article:modified_time" content="2020-05-05T11:23:36.209Z">
 <meta property="article:author" content="Life4Gal">
 <meta property="article:tag" content="MSVC&amp;MinGW有关虚表实现差异">
 <meta name="twitter:card" content="summary">
@@ -223,7 +223,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Inside-The-C-Object-Model"><a href="#Inside-The-C-Object-Model" class="headerlink" title="Inside The C++ Object Model"></a>Inside The C++ Object Model</h2><h3 id="今天看深度探索C-对象模型-Inside-The-C-Object-Model-一书有感，有幸与朋友一起讨论一个关于成员虚函数和虚表的问题，感觉收获颇丰，故记录下来。"><a href="#今天看深度探索C-对象模型-Inside-The-C-Object-Model-一书有感，有幸与朋友一起讨论一个关于成员虚函数和虚表的问题，感觉收获颇丰，故记录下来。" class="headerlink" title="今天看深度探索C++对象模型(Inside The C++ Object Model)一书有感，有幸与朋友一起讨论一个关于成员虚函数和虚表的问题，感觉收获颇丰，故记录下来。"></a>今天看<strong>深度探索C++对象模型(Inside The C++ Object Model)</strong>一书有感，有幸与朋友一起讨论一个关于<strong>成员虚函数</strong>和<strong>虚表</strong>的问题，感觉收获颇丰，故记录下来。</h3><p>我们讨论了两种测试，但其实这两种测试没有什么本质的区别。先上我们讨论的代码:</p>
+        <h2 id="Inside-The-C-Object-Model"><a href="#Inside-The-C-Object-Model" class="headerlink" title="Inside The C++ Object Model"></a>Inside The C++ Object Model</h2><h3 id="今天看深度探索C-对象模型-Inside-The-C-Object-Model-一书有感，有幸与朋友一起讨论一个关于成员虚函数和虚表的问题，感觉收获颇丰，故记录下来。"><a href="#今天看深度探索C-对象模型-Inside-The-C-Object-Model-一书有感，有幸与朋友一起讨论一个关于成员虚函数和虚表的问题，感觉收获颇丰，故记录下来。" class="headerlink" title="今天看深度探索C++对象模型(Inside The C++ Object Model)一书有感，有幸与朋友一起讨论一个关于成员虚函数和虚表的问题，感觉收获颇丰，故记录下来。"></a>今天看<strong>深度探索C++对象模型(Inside The C++ Object Model)</strong>一书有感，有幸与朋友一起讨论一个关于<strong>成员虚函数</strong>和<strong>虚表</strong>的问题，感觉收获颇丰，故记录下来。</h3><a id="more"></a>
+<p>我们讨论了两种测试，但其实这两种测试没有什么本质的区别。先上我们讨论的代码:</p>
 <ul>
 <li>Foo类，它有两个<strong>私有的虚函数</strong></li>
 <li><img src="/.com//class_Foo.png" alt></li>
@@ -290,11 +291,6 @@
       
     </div>
     <div class="article-info article-info-index">
-      
-        <div class="article-pop-out tagcloud">
-          <i class="icon-tuding"></i>
-          <a class="article-tag-list-link color3">置顶</a>
-        </div>
       
       
 	<div class="article-tag tagcloud">
@@ -540,11 +536,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">MSVC&MinGW有关虚表实现差异</a>
+                <a href="javascript:void(0)" class="js-tag color3">QT-2048</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">QT-2048</a>
+                <a href="javascript:void(0)" class="js-tag color4">MSVC&MinGW有关虚表实现差异</a>
               </li>
              
               <li class="article-tag-list-item">
