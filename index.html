@@ -411,6 +411,123 @@
 
 
   
+    <article id="post-001-hackme" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/19/001-hackme/">hackme</a>
+    </h1>
+  
+
+        
+        <a href="/2020/10/19/001-hackme/" class="archive-article-date">
+  	<time datetime="2020-10-19T10:02:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-19</time>
+</a>
+        
+        
+        
+        <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">245字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">1分</span>
+      </span>
+    </span>
+</div>
+
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="第一题-hackme"><a href="#第一题-hackme" class="headerlink" title="第一题: hackme"></a>第一题: hackme</h3><p>​    难度系数: 2.0(好像2020-8-7左右变成了3.0)</p>
+<p>​    题目来源: XCTF 3rd-GCTF-2017</p>
+<p>​    用时: 26分18秒</p>
+<p>​    原题链接:<a href="https://adworld.xctf.org.cn/task/answer?type=reverse&number=4&grade=1&id=4881&page=1" target="_blank" rel="noopener">传送门</a><br>    仓库地址: <a href="https://github.com/Life4gal/adworld.xctf-REVERSE/tree/master/001-hackme" target="_blank" rel="noopener">传送门</a></p>
+<h3 id="第一步，载入-IDA-咯"><a href="#第一步，载入-IDA-咯" class="headerlink" title="第一步，载入 IDA 咯"></a>第一步，载入 IDA 咯</h3><p><img src="https://github.com/Life4gal/adworld.xctf-REVERSE/blob/master/001-hackme/%E6%88%AA%E5%9B%BE/%E4%BC%AA%E4%BB%A3%E7%A0%81.png" alt="第一步"></p>
+<h3 id="汇编代码看起来还是很累的，直接-F5-吧"><a href="#汇编代码看起来还是很累的，直接-F5-吧" class="headerlink" title="汇编代码看起来还是很累的，直接 F5 吧"></a>汇编代码看起来还是很累的，直接 F5 吧</h3><p><img src="https://github.com/Life4gal/adworld.xctf-REVERSE/blob/master/001-hackme/%E6%88%AA%E5%9B%BE/%E6%B1%87%E7%BC%96%E4%BB%A3%E7%A0%81.png" alt="第二步"></p>
+<h3 id="中规中居的算法分析"><a href="#中规中居的算法分析" class="headerlink" title="中规中居的算法分析"></a>中规中居的算法分析</h3><p><img src="https://github.com/Life4gal/adworld.xctf-REVERSE/blob/master/001-hackme/%E6%88%AA%E5%9B%BE/%E5%88%86%E6%9E%90%E7%BB%93%E6%9E%9C.png" alt="第三步"></p>
+<h3 id="最后再带上解题代码"><a href="#最后再带上解题代码" class="headerlink" title="最后再带上解题代码"></a>最后再带上解题代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 原题见: https://adworld.xctf.org.cn/task/answer?type=reverse&amp;number=4&amp;grade=1&amp;id=4881&amp;page=1</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">// 22字节有效数据</span></span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">char</span> mask[] =</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="number">0x5F</span>, <span class="number">0xF2</span>, <span class="number">0x5E</span>, <span class="number">0x8B</span>,</span><br><span class="line">		<span class="number">0x4E</span>, <span class="number">0x0E</span>, <span class="number">0xA3</span>, <span class="number">0xAA</span>,</span><br><span class="line">		<span class="number">0xC7</span>, <span class="number">0x93</span>,<span class="number">0x81</span>, <span class="number">0x3D</span>,</span><br><span class="line">		<span class="number">0x5F</span>, <span class="number">0x74</span>, <span class="number">0xA3</span>, <span class="number">0x09</span>,</span><br><span class="line">		<span class="number">0x91</span>, <span class="number">0x2B</span>, <span class="number">0x49</span>, <span class="number">0x28</span>,</span><br><span class="line">		<span class="number">0x93</span>, <span class="number">0x67</span>, <span class="number">0x00</span>, <span class="number">0x00</span></span><br><span class="line">	&#125;;</span><br><span class="line">	<span class="comment">// 密码长度</span></span><br><span class="line">	<span class="keyword">constexpr</span> <span class="keyword">int</span> passwordLength = <span class="number">22</span>;</span><br><span class="line">	<span class="comment">// 密码</span></span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">char</span> password[passwordLength];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; passwordLength; ++i)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">const</span> <span class="keyword">unsigned</span> <span class="keyword">char</span> maskNum = mask[i];</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">int</span> compareNum = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= i; ++j)</span><br><span class="line">		&#123;</span><br><span class="line">			compareNum = <span class="number">1828812941</span> * compareNum + <span class="number">12345</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">// 要让 maskNum == (compareNum ^ passwordNum) </span></span><br><span class="line">		<span class="comment">// 即 passwordNum == compareNum ^ maskNum</span></span><br><span class="line">		password[i] = compareNum ^ maskNum;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">const</span> <span class="keyword">unsigned</span> <span class="keyword">char</span> i : password)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">// 直接打印有乱码</span></span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%c"</span>, i);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="IDA-的分析文件在这里哟"><a href="#IDA-的分析文件在这里哟" class="headerlink" title="IDA 的分析文件在这里哟"></a>IDA 的分析文件在<a href="https://github.com/Life4gal/adworld.xctf-REVERSE/blob/master/001-hackme/hackme.i64" target="_blank" rel="noopener">这里</a>哟</h3>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">攻防世界</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<!-- 开始添加阅读量-->
+	
+	<!-- 添加完成 -->
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/攻防世界//" class="article-tag-list-link color5">攻防世界</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
     <article id="post-突发奇想来的没什么用的代理接口" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1196,118 +1313,10 @@
 
 
   
-    <article id="post-类模板" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/18/%E7%B1%BB%E6%A8%A1%E6%9D%BF/">类模板</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/18/%E7%B1%BB%E6%A8%A1%E6%9D%BF/" class="archive-article-date">
-  	<time datetime="2020-04-19T05:37:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-19</time>
-</a>
-        
-        
-        
-        <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">1.8k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">9分</span>
-      </span>
-    </span>
-</div>
-
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="C-有关类模板的一些笔记"><a href="#C-有关类模板的一些笔记" class="headerlink" title="C++有关类模板的一些笔记"></a>C++有关类模板的一些笔记</h1><h2 id="类模板示例"><a href="#类模板示例" class="headerlink" title="类模板示例"></a>类模板示例</h2>
-        
-          <a class="article-more-a" href="/2020/04/18/%E7%B1%BB%E6%A8%A1%E6%9D%BF/#more">展开全文 >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">CPP-类模板</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<!-- 开始添加阅读量-->
-	
-	<!-- 添加完成 -->
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/CPP-模板//" class="article-tag-list-link color2">CPP-模板</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
+    </nav>
   
 
 
@@ -1413,7 +1422,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">hello-world</a>
+                <a href="javascript:void(0)" class="js-tag color5">攻防世界</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">MSVC&MinGW有关虚表实现差异</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1421,19 +1434,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">hello-world</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">CPP-函数模板</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">我回来了！</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CPP-没什么用的代理接口</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">MSVC&MinGW有关虚表实现差异</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1442,6 +1447,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">CPP-工厂与抽象工厂</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">我回来了！</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">CPP-没什么用的代理接口</a>
               </li>
              
               <li class="article-tag-list-item">

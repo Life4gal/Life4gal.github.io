@@ -6,19 +6,26 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://baka99.com">
-  <title>非类型模板参数 | Abase-Yourself</title>
+  <title>Tag: 攻防世界 | Abase-Yourself</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="C++有关非类型模板参数的一些笔记非类型的类模板参数">
-<meta property="og:type" content="article">
-<meta property="og:title" content="非类型模板参数">
-<meta property="og:url" content="https://baka99.com/2020/04/19/%E9%9D%9E%E7%B1%BB%E5%9E%8B%E6%A8%A1%E6%9D%BF%E5%8F%82%E6%95%B0/index.html">
+  <meta name="description" content="站长很懒，没有添加描述...">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Abase-Yourself">
+<meta property="og:url" content="https://baka99.com/tags/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C/index.html">
 <meta property="og:site_name" content="Abase-Yourself">
-<meta property="og:description" content="C++有关非类型模板参数的一些笔记非类型的类模板参数">
+<meta property="og:description" content="站长很懒，没有添加描述...">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-04-20T05:34:28.000Z">
-<meta property="article:modified_time" content="2020-04-21T05:11:51.359Z">
 <meta property="article:author" content="Life4Gal">
-<meta property="article:tag" content="CPP-非类型参数模板">
+<meta property="article:tag" content="CPP">
+<meta property="article:tag" content="C++">
+<meta property="article:tag" content="代码">
+<meta property="article:tag" content="开发">
+<meta property="article:tag" content="IT">
+<meta property="article:tag" content="开源">
+<meta property="article:tag" content="Code">
+<meta property="article:tag" content="模板">
+<meta property="article:tag" content="设计模式">
+<meta property="article:tag" content="笔记">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Abase-Yourself" type="application/atom+xml">
@@ -173,262 +180,71 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-非类型模板参数" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      非类型模板参数
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2020" class="archive-year">2020</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2020/10/19/001-hackme/" class="archive-article-date">
+  	<time datetime="2020-10-19T10:02:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-19</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2020/10/19/001-hackme/">hackme</a>
     </h1>
   
 
-        
-        <a href="/2020/04/19/%E9%9D%9E%E7%B1%BB%E5%9E%8B%E6%A8%A1%E6%9D%BF%E5%8F%82%E6%95%B0/" class="archive-article-date">
-  	<time datetime="2020-04-20T05:34:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-20</time>
-</a>
-        
-        
-        
-        <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">837字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">4分</span>
-      </span>
-    </span>
-</div>
-
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="C-有关非类型模板参数的一些笔记"><a href="#C-有关非类型模板参数的一些笔记" class="headerlink" title="C++有关非类型模板参数的一些笔记"></a>C++有关非类型模板参数的一些笔记</h1><h2 id="非类型的类模板参数"><a href="#非类型的类模板参数" class="headerlink" title="非类型的类模板参数"></a>非类型的类模板参数</h2><a id="more"></a>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;array&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, <span class="built_in">std</span>::<span class="keyword">size_t</span> max_size&gt;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">bucket</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">    bucket() = <span class="keyword">default</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">push</span><span class="params">(<span class="keyword">const</span> T&amp; val)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (curr_size == arr.max_size())</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="built_in">std</span>::out_of_range(<span class="string">"桶已经满了"</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        arr[curr_size] = val;</span><br><span class="line">        ++curr_size;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">pop</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (curr_size == <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="built_in">std</span>::out_of_range(<span class="string">"桶已经空了"</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        --curr_size;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    [[nodiscard]] <span class="function">T <span class="title">peek</span><span class="params">()</span> <span class="keyword">const</span> <span class="keyword">noexcept</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> arr[curr_size<span class="number">-1</span>];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    [[nodiscard]] <span class="function"><span class="keyword">bool</span> <span class="title">empty</span><span class="params">()</span> <span class="keyword">const</span> <span class="keyword">noexcept</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> curr_size == <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    [[nodiscard]] <span class="function"><span class="keyword">bool</span> <span class="title">full</span><span class="params">()</span> <span class="keyword">const</span> <span class="keyword">noexcept</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> curr_size == arr.max_size();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    [[nodiscard]] <span class="function"><span class="keyword">size_t</span> <span class="title">size</span><span class="params">()</span> <span class="keyword">const</span> <span class="keyword">noexcept</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> curr_size;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span>:</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">array</span>&lt;T, max_size&gt; arr&#123;&#125;;</span><br><span class="line">    <span class="built_in">std</span>::<span class="keyword">size_t</span> curr_size&#123;&#125;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 指定类型的同时需要指定大小</span></span><br><span class="line">bucket&lt;<span class="keyword">int</span>, <span class="number">20</span>&gt; int_bucket;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">20</span>; ++i)</span><br><span class="line">&#123;</span><br><span class="line">    int_bucket.push(i);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span>(!int_bucket.empty())</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; int_bucket.<span class="built_in">peek</span>() &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    int_bucket.pop();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="非类型的函数模板参数"><a href="#非类型的函数模板参数" class="headerlink" title="非类型的函数模板参数"></a>非类型的函数模板参数</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, <span class="keyword">int</span> pad_val&gt;</span><br><span class="line"><span class="function">T <span class="title">pad</span><span class="params">(T x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> x + pad_val;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; vec&#123; <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span> &#125;;</span><br><span class="line"><span class="function"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">pad_vec</span><span class="params">(<span class="number">4</span>)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">std</span>::transform(vec.<span class="built_in">begin</span>(), vec.<span class="built_in">end</span>(), pad_vec.<span class="built_in">begin</span>(), pad&lt;<span class="keyword">int</span>, <span class="number">42</span>&gt;);</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i : pad_vec)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; i &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>也可以使用推测(推测参照必须出现在推测之前)</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">auto</span> pad_val, <span class="keyword">typename</span> T = <span class="keyword">decltype</span>(pad_val)&gt;</span><br><span class="line">T pad(T x)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">return</span> x + pad_val;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>或者指定传值类型相同</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, T pad_val = T&#123;&#125;&gt;</span><br><span class="line">T pad(T x)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">return</span> x + pad_val;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h2 id="非类型模板参数限制"><a href="#非类型模板参数限制" class="headerlink" title="非类型模板参数限制"></a>非类型模板参数限制</h2><ul>
-<li>非类型模板参数可以是 <strong>整形，枚举值，只想外部链接的指针</strong></li>
-<li>非类型模板参数不可以是 <strong>浮点数，类对象</strong></li>
-</ul>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, <span class="keyword">double</span> pad_val&gt;	<span class="comment">// 严重错误，不能是浮点数</span></span><br><span class="line"><span class="function">T <span class="title">pad</span><span class="params">(T x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x + pad_val;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, <span class="built_in">std</span>::<span class="built_in">string</span> pad_str&gt;	<span class="comment">// 严重错误，不能是类对象</span></span><br><span class="line"><span class="function">T <span class="title">pad</span><span class="params">(T x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x + pad_str;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>非类型模板参数不可以是 <strong>字符字面量，临时对象，数据成员，其他子对象的模板实参</strong></li>
-</ul>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, <span class="keyword">const</span> <span class="keyword">char</span>* pad_str&gt;</span><br><span class="line"><span class="function">T <span class="title">pad</span><span class="params">(T x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x + pad_str;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">string</span> str = <span class="string">"42"</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">char</span>* cc = <span class="string">"42"</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">char</span> ca[] = <span class="string">"42"</span>;</span><br><span class="line"></span><br><span class="line">str = pad&lt;<span class="built_in">std</span>::<span class="built_in">string</span>, <span class="string">"42"</span>&gt;(str);	<span class="comment">// 严重错误	</span></span><br><span class="line">str = pad&lt;<span class="built_in">std</span>::<span class="built_in">string</span>, cc&gt;(str);	<span class="comment">// 严重错误</span></span><br><span class="line">str = pad&lt;<span class="built_in">std</span>::<span class="built_in">string</span>, ca&gt;(str);	<span class="comment">// 严重错误</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>C++各个版本对限制都有所放宽</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// C++11在全局作用域声明external linkage即可</span></span><br><span class="line"><span class="keyword">extern</span> <span class="keyword">const</span> <span class="keyword">char</span> str[] = <span class="string">"42"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// C++14在全局作用域声明internal linkage也可以</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">char</span> str[] = <span class="string">"42"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 注意，必须是 char str[]，如果改为 char*则不可以</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>非模板类型参数可以是 <strong>编译期可以获得结果的表达式</strong></p>
-</li>
-</ul>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, <span class="keyword">int</span> pad_var = <span class="keyword">sizeof</span>(T)&gt;</span><br><span class="line">T pad(T x)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> x + pad_str;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> i = <span class="number">42</span>;</span><br><span class="line">i = pad&lt;<span class="keyword">int</span>&gt;(i);</span><br><span class="line">i = pad&lt;<span class="keyword">int</span>, <span class="keyword">sizeof</span>(<span class="keyword">double</span>)&gt;(i);</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>如果表达式内使用了 &gt; 大于号，则必须对表达式使用()，防止 &gt; 被当作右尖括号</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, <span class="keyword">bool</span> b&gt;</span><br><span class="line"><span class="function">T <span class="title">pad</span><span class="params">(T x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> x + (b ? <span class="keyword">sizeof</span>(T) : <span class="keyword">sizeof</span>(<span class="keyword">double</span>));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> i = <span class="number">42</span>;</span><br><span class="line">i = pad&lt;<span class="keyword">int</span>, (<span class="keyword">sizeof</span>(<span class="keyword">double</span>) &gt; <span class="keyword">sizeof</span>(<span class="keyword">int</span>))&gt;(i);</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; i &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ul>
-<h2 id="auto非类型模板参数"><a href="#auto非类型模板参数" class="headerlink" title="auto非类型模板参数"></a>auto非类型模板参数</h2><ul>
-<li>C++17允许使用auto接收任何<strong>允许的非类型模板参数</strong></li>
-</ul>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, <span class="keyword">auto</span> max_size&gt;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">bucket</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>C++14允许auto作为返回类型</li>
-</ul>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[[nodiscard]] <span class="function"><span class="keyword">auto</span> <span class="title">size</span><span class="params">()</span> <span class="keyword">const</span> <span class="keyword">noexcept</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> curr_size;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>但是auto依旧不能接收 <strong>const char*</strong></li>
-</ul>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span>  T, <span class="keyword">auto</span> pad_val&gt;</span><br><span class="line"><span class="function">T <span class="title">pad</span><span class="params">(T x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> x + <span class="keyword">sizeof</span>(pad_val);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> i = <span class="number">42</span>;</span><br><span class="line">i = pad&lt;<span class="keyword">int</span>, <span class="number">42</span>&gt;(i);</span><br></pre></td></tr></table></figure>
-
-
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">CPP-非类型参数模板</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">攻防世界</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
-	<!-- 开始添加阅读量-->
-	
-	<span id="busuanzi_container_page_pv">
-	|  阅读量<span id="busuanzi_value_page_pv"></span>次
-	</span>
-	
-	<!-- 添加完成 -->
-      
+          
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/CPP-模板//" class="article-tag-list-link color2">CPP-模板</a>
+        			<a href="/categories/攻防世界//" class="article-tag-list-link color5">攻防世界</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
-      
-
-      
-      
-	<div style="padding:0 40px 10px;">
-    <!-- social-share Button BEGIN -->
-    <div class="social-share"></div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.15/js/social-share.min.js"></script>
-    <!-- social-share Button END -->
-</div>
-
-      
-      <div class="clearfix"></div>
-    </div>
+        </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2020/04/20/%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0%E6%A8%A1%E6%9D%BF/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          可变参数模板
-        
-      </div>
-    </a>
   
   
-    <a href="/2020/04/19/%E5%87%BD%E6%95%B0%E6%A8%A1%E6%9D%BF/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">函数模板</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-        <div class="toc-container tooltip-left">
-            <i class="icon-font icon-category"></i>
-            <div class="tooltip tooltip-east">
-                <span class="tooltip-item">
-                </span>
-                <span class="tooltip-content">
-                    <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#C-有关非类型模板参数的一些笔记"><span class="toc-number">1.</span> <span class="toc-text">C++有关非类型模板参数的一些笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#非类型的类模板参数"><span class="toc-number">1.1.</span> <span class="toc-text">非类型的类模板参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#非类型的函数模板参数"><span class="toc-number">1.2.</span> <span class="toc-text">非类型的函数模板参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#非类型模板参数限制"><span class="toc-number">1.3.</span> <span class="toc-text">非类型模板参数限制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#auto非类型模板参数"><span class="toc-number">1.4.</span> <span class="toc-text">auto非类型模板参数</span></a></li></ol></li></ol>
-                    </div>
-                </span>
-            </div>
-        </div>
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
-  
-
-
-
-  <section id="comments" class="comments">
-    <style>
-      .comments{margin:30px;padding:10px;background:#fff}
-      @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:#fff}}
-    </style>
-    <div id="vcomment" class="comment"></div>
-<script src="//cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
-<script src="//cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min.js"></script>
-<script src='//cdn.jsdelivr.net/npm/valine/dist/Valine.min.js'></script>
-<script>
-   var notify = 'false' == true ? true : false;
-   var verify = 'false' == true ? true : false;
-   new Valine({
-            av: AV,
-            el: '#vcomment',
-            notify: notify,
-            verify: verify,
-            app_id: "KBynBA6rRCuYE7cELfEpvA4i-gzGzoHsz",
-            app_key: "5QL9o0PXSgmcpT9tsvynhu5J",
-            placeholder: "吐槽一下～",
-            avatar: "mm",
-            avatar_cdn: "",
-            pageSize: 10
-    });
-    if(window.location.hash){
-        var checkExist = setInterval(function() {
-           if ($(window.location.hash).length) {
-              $('html, body').animate({scrollTop: $(window.location.hash).offset().top-90}, 1000);
-              clearInterval(checkExist);
-           }
-        }, 100);
-    }
-</script>
-
-  </section>
+    
 
 
           </div>
@@ -463,9 +279,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
